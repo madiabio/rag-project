@@ -1,5 +1,10 @@
-from langchain_community.llms import Ollama
-llm = Ollama(model="llama2")
-result = llm.invoke("Tell me a joke")
-print(result)
+from langchain.document_loaders.pdf import PyPDFDirectoryLoader
+
+DATA_PATH = "."
+def load_documents():
+    document_loader = PyPDFDirectoryLoader(DATA_PATH)
+    return document_loader.load()
+
+documents = load_documents()
+print(documents)
 
